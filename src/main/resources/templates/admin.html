@@ -9,31 +9,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">-->
-    <!--&lt;!&ndash;    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>&ndash;&gt;-->
-    <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>-->
-    <!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
-    <!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
-    <!--&lt;!&ndash;    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>&ndash;&gt;-->
-    <!--    <style>-->
-    <!--        .navbar{-->
-    <!--            color: white;-->
-    <!--        }-->
-    <!--    </style>-->
-    <!--    <script>-->
-    <!--        function show(shown, hidden) {-->
-    <!--            document.getElementById(shown).style.display = 'block';-->
-    <!--            document.getElementById(hidden).style.display = 'none';-->
-    <!--            return false;-->
-    <!--        }-->
-    <!--    </script>-->
+
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <div>
-            <span class="navbar-text text-white font-weight-bold" th:text="${admin.getEmail()}" ></span>
+            <span class="navbar-text text-white font-weight-bold" th:text="${admin.getEmail()}"></span>
             <span class="navbar-text text-white">with roles</span>
             <span class="navbar-text text-white" th:each="role : ${admin.getRoles()}"
                   th:text="${role.getName()}">   </span>
@@ -47,17 +29,17 @@
 <div class="container-fluid bg-light">
     <div class="row">
 
-            <!-- Левый блок -->
-            <div class="col-2 p-0 gy-3 bg-white min-vh-100">
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" th:href="@{/admin}" >Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/user}">User</a>
-                    </li>
-                </ul>
-            </div>
+        <!-- Левый блок -->
+        <div class="col-2 p-0 gy-3 bg-white min-vh-100">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/admin}">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/user}">User</a>
+                </li>
+            </ul>
+        </div>
 
         <!-- Правый блок -->
         <div class="col-10 bg-light">
@@ -94,7 +76,7 @@
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
-                                <tbody >
+                                <tbody>
                                 <tr th:each="user : ${users}">
                                     <td th:text="${user.id}"></td>
                                     <td th:text="${user.name}"></td>
@@ -358,7 +340,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

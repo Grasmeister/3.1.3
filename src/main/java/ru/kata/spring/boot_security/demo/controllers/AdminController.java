@@ -50,20 +50,6 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-//    /**
-//     * Создание пользователя отображение формы.
-//     *
-//     * @param model
-//     * @return
-//     */
-//    @GetMapping("/create")
-//    public String creatUserForm(Model model) {
-//        model.addAttribute("user", new User());
-//        model.addAttribute("roles", roleService.listRoles());
-//
-//        return "/create";
-//    }
-
     /**
      * Создание пользователя пост запрос.
      *
@@ -77,33 +63,6 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-//    /**
-//     * Обновление пользователя, отображение формы.
-//     *
-//     * @param model
-//     * @param id
-//     * @return
-//     */
-//    @GetMapping("/{id}/update")
-//    public String updateUser(Model model, @PathVariable("id") Long id) {
-//        model.addAttribute("user", userService.findUserById(id));
-//        model.addAttribute("roles", roleService.listRoles());
-//        return "/update";
-//
-//    }
-
-//    /**
-//     * Обновление пользователя, пост запрос.
-//     *
-//     * @param user
-//     * @return
-//     */
-//    @PatchMapping("/update/{id}")
-//    public String update(@ModelAttribute("user") User user) {
-//
-//        userService.updateUser(user);
-//        return "redirect:/admin";
-//    }
     @PostMapping("/update/{id}")
     public String updateUser(@ModelAttribute("user") User user, @RequestParam(value = "role") String role) {
         user.setRoles(roleService.findRolesByName(role));
