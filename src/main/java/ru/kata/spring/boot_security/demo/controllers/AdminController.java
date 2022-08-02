@@ -29,10 +29,11 @@ public class AdminController {
      */
     @GetMapping()
     public String userList(Model model, Principal principal) {
+
         model.addAttribute("users", userService.allUsers());
         model.addAttribute("roles", roleService.listRoles());
         model.addAttribute("admin", userService.findUserByName(principal.getName()));
-
+        model.addAttribute("newUser", new User());
 
         return "/admin";
     }
@@ -43,25 +44,25 @@ public class AdminController {
      * @param id
      * @return
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return "redirect:/admin";
     }
 
-    /**
-     * Создание пользователя отображение формы.
-     *
-     * @param model
-     * @return
-     */
-    @GetMapping("/create")
-    public String creatUserForm(Model model) {
-        model.addAttribute("user", new User());
-        model.addAttribute("roles", roleService.listRoles());
-
-        return "/create";
-    }
+//    /**
+//     * Создание пользователя отображение формы.
+//     *
+//     * @param model
+//     * @return
+//     */
+//    @GetMapping("/create")
+//    public String creatUserForm(Model model) {
+//        model.addAttribute("user", new User());
+//        model.addAttribute("roles", roleService.listRoles());
+//
+//        return "/create";
+//    }
 
     /**
      * Создание пользователя пост запрос.
@@ -91,18 +92,23 @@ public class AdminController {
 //
 //    }
 
-    /**
-     * Обновление пользователя, пост запрос.
-     *
-     * @param user
-     * @return
-     */
-    @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user) {
-
+//    /**
+//     * Обновление пользователя, пост запрос.
+//     *
+//     * @param user
+//     * @return
+//     */
+//    @PatchMapping("/update/{id}")
+//    public String update(@ModelAttribute("user") User user) {
+//
+//        userService.updateUser(user);
+//        return "redirect:/admin";
+//    }
+    @PostMapping("/update/{id}")
+    public String updateUser(@ModelAttribute("user") User user, @RequestParam(value = "role") String role) {
+        user.setRoles(roleService.findRolesByName(role));
         userService.updateUser(user);
         return "redirect:/admin";
     }
-
 
 }
